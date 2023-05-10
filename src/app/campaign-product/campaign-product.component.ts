@@ -39,7 +39,6 @@ export class CampaignProductComponent extends CrudPagedListComponent implements 
   crmNames: {} = {};
   allCRMCampaigns: {} = {};
   selectProductsFlag = false;
-  editEnabled = true;
   loading = false;
   selectedCampaignProduct: CampaignProduct | null = null;
   selectedCRMCampaign: CRMCampaign | null = null;
@@ -367,11 +366,6 @@ export class CampaignProductComponent extends CrudPagedListComponent implements 
 
   onCancelEditCampaignProduct() {
     this.selectedCampaignProduct = null;
-  }
-
-  createTestOrder(campaignProduct: CampaignProduct) {
-    this.selectedCampaignProduct = campaignProduct;
-    this.modalService.getModal('productTestOrderDialog').open();
   }
 
   editCRMCampaign(campaign: CRMCampaign) {

@@ -147,16 +147,16 @@
             <span *ngIf="field === 'price' || field === 'min_price'">${{getFieldValue(row, field)}}</span>
             <span *ngIf="field === 'exchangeable_status'" [innerHTML]="getFieldValue(row, field)"></span>
             <ng-container *ngIf="field === 'crm_campaign_name' || field === 'crm_campaign_id'">
-              <span *ngIf="row.crm_campaign && allCRMCampaigns[row.crm_campaign]">
+              <a *ngIf="row.crm_campaign && allCRMCampaigns[row.crm_campaign]" href="javascript:void(0);" (click)="editCRMCampaign(allCRMCampaigns[row.crm_campaign])" title="{{getFieldValue(row, field)}}">
               {{getFieldValue(row, field)}}
-              </span>
+              </a>
             </ng-container>
             <img *ngIf="field == 'image'" class="related-product-image" [src]="getFieldValue(row, field)" alt="" />
-            <a *ngIf="field === 'name'" href="javascript:void(0);" (click)="editEnabled && editCampaignProduct(row)" title="{{getFieldValue(row, field)}}">{{getFieldValue(row, field)}}</a>
+            <a *ngIf="field === 'name'" href="javascript:void(0);" (click)="editCampaignProduct(row)" title="{{getFieldValue(row, field)}}">{{getFieldValue(row, field)}}</a>
           </ng-template>
         </ngx-datatable-column>
 
-        <ngx-datatable-column *ngIf="editEnabled" cellClass="existing-products-table-last-cell" [sortable]="false" [maxWidth]="75">
+        <ngx-datatable-column cellClass="existing-products-table-last-cell" [sortable]="false" [maxWidth]="75">
           <ng-template let-row="row" ngx-datatable-cell-template>
             <a class="action-link" href="javascript:void(0);" (click)="editCampaignProduct(row)" title="Edit"><i class="la la-edit edit"></i></a>
           </ng-template>
@@ -175,7 +175,6 @@
 </div>
 
 <ngx-smart-modal
-  *ngIf="editEnabled"
   #editCampaignProductDialog
   identifier="editCampaignProductDialog"
   customClass="nsm-dialog-xxl nsm-centered"
