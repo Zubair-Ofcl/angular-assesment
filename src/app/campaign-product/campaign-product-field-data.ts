@@ -19,23 +19,14 @@ export const campaignProductFieldData = {
   discount_type: {
     label: 'DISCOUNT TYPE', getter: (campaignProduct: CampaignProduct, value: any) => DiscountPriceTypeMap[campaignProduct.discount_type]
   },
-  exchangeable_status: {
-    label: 'EXCHANGEABLE STATUS', getter: (campaignProduct: CampaignProduct, value: any) => campaignProduct.has_exchangeable_products ? '<i class="fa fa-check fa-2x text-success">' : '<i class="fa fa-close fa-2x text-danger">'
-  },
   crm: {
     label: 'CRM', getter: (campaignProduct: CampaignProduct, value: any, crms: any) => crms[campaignProduct.crm] || ''
   },
   campaign_product_id: {
     label: 'PRODUCT ID', getter: (campaignProduct: CampaignProduct, value: any) => value
   },
-  offer_id: {
-    label: 'OFFER ID', getter: (campaignProduct: CampaignProduct, value: any) => value
-  },
   price: {
     label: 'PRICE', getter: (campaignProduct: CampaignProduct, value: any) => value
-  },
-  billing_model_id: {
-    label: 'BILLING MODEL ID', getter: (campaignProduct: CampaignProduct, value: any) => value
   },
   fulfillment_quantity: {
     label: 'FULFILLMENT QUANTITY', getter: (campaignProduct: CampaignProduct, value: any) => campaignProduct.product ? campaignProduct.product.quantity : ''
@@ -58,9 +49,5 @@ export const campaignProductFieldData = {
   crm_campaign_id: {
     label: 'CRM CAMPAIGN ID',
     getter: (campaignProduct: CampaignProduct, value: any, crmCampaigns: any) => crmCampaigns[campaignProduct.crm_campaign] ? crmCampaigns[campaignProduct.crm_campaign].crm_campaign_id : ''
-  },
-  index_prices: {
-    label: 'INDEX PRICES',
-    getter: (campaignProduct: CampaignProduct, value: any) => campaignProduct.discounts.map((discount) => `$${discount.price}`).join(', ')
   },
 };

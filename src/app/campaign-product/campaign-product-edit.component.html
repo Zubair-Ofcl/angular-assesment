@@ -9,8 +9,6 @@
           <div *ngIf="crmCampaign" class="form-group"><label>Campaign:</label> {{crmCampaign.name}} ({{crmCampaign.crm_campaign_id}})</div>
           <div class="form-group"><label>Campaign Product ID:</label> {{campaignProduct.campaign_product_id}}</div>
           <div class="form-group"><label>Product ID:</label> {{campaignProduct.product.product_id}}</div>
-          <div *ngIf="campaignProduct.offer_id" class="form-group"><label>Offer ID:</label> {{campaignProduct.offer_id}}</div>
-          <div *ngIf="campaignProduct.billing_model_id" class="form-group"><label>Billing Model ID:</label> {{campaignProduct.billing_model_id}}</div>
           <div class="form-group"><label>SKU:</label> {{campaignProduct.product.sku}}</div>
           <div class="form-group"><label>Price:</label> ${{campaignProduct.price}}</div>
           <div class="form-group"><label>Shipping Price:</label> ${{campaignProduct.shipping_price}}</div>

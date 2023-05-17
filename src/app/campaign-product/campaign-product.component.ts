@@ -13,10 +13,9 @@ import {
   CampaignProduct,
   Category,
   CRM,
-  CRMTypeId,
   CRMCampaign,
   ImageSize,
-  Pager, BillingCycleTypeMap, DiscountPriceTypeMap, ExchangeableProduct, Campaign
+  Pager, BillingCycleTypeMap, DiscountPriceTypeMap, Campaign
 } from '../_models';
 import {forkJoin, Observable} from "rxjs";
 import {config} from '../../config/config';
@@ -33,7 +32,6 @@ import {campaignProductFieldData} from './campaign-product-field-data';
 })
 export class CampaignProductComponent extends CrudPagedListComponent implements OnInit {
   campaignProducts$: Observable<CampaignProduct[]> = this.data$;
-  categories: any[] = [];
   crmCampaigns: any[] = [];
   crms: CRM[];
   crmNames: {} = {};
@@ -81,14 +79,10 @@ export class CampaignProductComponent extends CrudPagedListComponent implements 
         {model: "product_name", label: "Base Product Name", default: false, disabled: false, sortable: true},
         {model: "crm", label: "CRM", default: true, disabled: false},
         {model: "product_sku", label: "SKU", default: false, disabled: false, sortable: true},
-        {model: "offer_id", label: "Offer ID", default: false, disabled: false, sortable: true},
-        {model: "billing_model_id", label: "Billing Model ID", default: false, disabled: false, sortable: true},
         {model: "price", label: "Price", default: false, disabled: false, sortable: true},
         {model: "min_price", label: "Minimum Price", default: false, disabled: false, sortable: true},
         {model: "billing_cycle_type", label: "Billing Cycle Type", default: false, disabled: false},
-        {model: "index_prices", label: "Index Prices", default: false, disabled: false},
         {model: "discount_type", label: "Discount Type", default: false, disabled: false},
-        {model: "exchangeable_status", label: "Exchangeable Status", default: false, disabled: false},
         {model: "fulfillment_quantity", label: "Fulfillment Quantity", default: false, disabled: false, sortable: true},
       ]
     ],
@@ -131,8 +125,6 @@ export class CampaignProductComponent extends CrudPagedListComponent implements 
       ],
     ]
   };
-
-  public selectedExchangeableProducts: ExchangeableProduct[] = []
 
   constructor(
     protected router: Router,
@@ -223,8 +215,8 @@ export class CampaignProductComponent extends CrudPagedListComponent implements 
   }
 
   fetchCRMRelatedData() {
-    let crmQueryParams = {page: 1, page_size: config.maxPageSize, 'type!': CRMTypeId.Test};
-    let crmCampaignQueryParams = {page: 1, page_size: config.maxPageSize, 'crm__type!': CRMTypeId.Test};
+    let crmQueryParams = {page: 1, page_size: config.maxPageSize};
+    let crmCampaignQueryParams = {page: 1, page_size: config.maxPageSize};
 
     forkJoin([
       this.crmService.list(crmQueryParams),
@@ -418,8 +410,7 @@ export class CampaignProductComponent extends CrudPagedListComponent implements 
   showColumnWithoutLink(field: string) {
     return !([
       'name', 'image', 'price', 'min_price',
-      'crm_campaign_name', 'crm_campaign_id',
-      'exchangeable_status'
+      'crm_campaign_name', 'crm_campaign_id'
     ].includes(field));
   }
 
