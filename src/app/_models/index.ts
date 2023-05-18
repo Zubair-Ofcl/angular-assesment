@@ -5,7 +5,6 @@ export * from './address';
 export * from './region';
 export * from './pager';
 export * from './crm';
-export * from './category';
 export * from './campaign';
 export * from './product';
 export * from './image';

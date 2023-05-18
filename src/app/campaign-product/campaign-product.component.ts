@@ -11,7 +11,6 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {CrudPagedListComponent} from '../_directives';
 import {
   CampaignProduct,
-  Category,
   CRM,
   CRMCampaign,
   ImageSize,
@@ -94,7 +93,6 @@ export class CampaignProductComponent extends CrudPagedListComponent implements 
         {model: "product__sku__icontains", label: "SKU", default: false, disabled: false},
         {model: "campaign_product_id", label: "Campaign Product ID", default: false, disabled: false},
         {model: "product__product_id", label: "Base Product ID", default: false, disabled: false},
-        {model: "product__categories", label: "Category", default: false, disabled: false},
         {model: "billing_cycle_type", label: "Billing Cycle Type", default: false, disabled: false},
         {model: "discount_type", label: "Discount Type", default: false, disabled: false},
         {model: "crm_campaign__campaign", label: "Brand", default: false, disabled: false},
@@ -108,7 +106,6 @@ export class CampaignProductComponent extends CrudPagedListComponent implements 
         {model: "product__product_id", filter: "product__product_id", type: "input", label: "Base Product ID", default: ""},
         {model: "crm_campaign", filter: "crm_campaign", type: "multi-select", label: "CRM campaign", default: "", options: []},
         {model: "campaign_product_id", filter: "campaign_product_id", type: "input", label: "Campaign Product ID", default: ""},
-        {model: "product__categories", filter: "product__categories", type: "multi-select", label: "Category", default: "", options: []},
         {model: "crm_campaign__campaign", filter: "crm_campaign__campaign", type: "multi-select", label: "Brand", default: "", options: []},
         {model: "billing_cycle_type", filter: "billing_cycle_type", type: "select", label: "Billing Cycle Type", default: "", options:
           [{ label: 'All', value: "" }].concat(
