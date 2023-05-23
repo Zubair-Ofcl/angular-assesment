@@ -68,10 +68,6 @@ export function getPlaceholderImageUrl(size: ImageSize) {
 export function getProductImageUrl(product: RelatedProduct, size: ImageSize = ImageSize.original) {
   let image = product.default_image;
 
-  if (!image && product.images.length) {
-    image = product.images[0];
-  }
-
   return image && image.file ? image.file[size] : getPlaceholderImageUrl(size);
 }
 

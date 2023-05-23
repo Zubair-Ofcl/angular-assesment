@@ -25,7 +25,6 @@ export interface RelatedProduct extends BaseModel {
   description: string;
   msrp: number;
   default_image: Image;
-  images: Image[];
   fulfillment_type: FulfillmentTypeEnum;
   quantity: number;
   process_type: ProcessTypeEnum;

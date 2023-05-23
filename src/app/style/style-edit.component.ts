@@ -37,7 +37,6 @@ export class StyleEditComponent extends StyleNewComponent implements OnInit {
           this.styles = style.styles || {};
           this.form.patchValue({
             name: style.name,
-            content: style.content,
             language: style.language,
             header_style: style.header_style,
             footer_style: style.footer_style,
