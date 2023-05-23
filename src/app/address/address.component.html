@@ -3,14 +3,12 @@
     <thead>
     <tr>
       <th>Address</th>
-      <th>Default</th>
       <th class="actions-column">Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let address of addresses$ | async">
       <td>{{address.address1}} {{address.address2}}<br/>{{address.city}}, {{address.state}} {{address.zip}}, {{address.country}}</td>
-      <td><span *ngIf="defaultAddress && (address.id == defaultAddress.id)">Default</span></td>
 
       <td class="td-actions">
         <a [routerLink]="['/address', 'edit', address.id]" title="Edit"><i class="la la-edit edit"></i></a>

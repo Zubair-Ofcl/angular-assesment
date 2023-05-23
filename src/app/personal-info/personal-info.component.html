@@ -15,22 +15,12 @@
           <input type="text" formControlName="last_name" placeholder="Last Name" class="form-control">
           <div class="help is-danger">{{getAppropriateError('last_name', true)}}</div>
         </div>
-        <div class="col-12 form-group mb-3">
-          <label>Email</label>
-          <input type="text" formControlName="email" placeholder="Email" class="form-control">
-          <div class="help is-danger">{{getAppropriateError('email', true)}}</div>
-        </div>
-        <div class="col-12 form-group mb-3">
-          <label>Phone Number</label>
-          <input type="text" formControlName="phone" placeholder="Phone Number" class="form-control">
-          <div class="help is-danger">{{getAppropriateError('phone', true)}}</div>
-        </div>
       </div>
-      <div *ngIf="user.is_staff" class="col-12 addresses-container">
+      <div class="col-12 addresses-container">
         <h3 class="subtitle">Addresses</h3>
         <Addresses></Addresses>
       </div>
-      <input class="btn btn-primary" type="button" value="Submit" (click)="onSubmit()">
+      <input class="btn btn-primary" type="button" value="Save" (click)="onSubmit()">
       <input class="btn btn-secondary" type="button" value="Cancel" (click)="goBack()">
     </form>
   </div>
