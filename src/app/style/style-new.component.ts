@@ -23,15 +23,6 @@ export class StyleNewComponent extends CrudSaveComponent implements OnInit {
   style: Style;
   salesPhrases: SalesPhrase[];
   styles = null;
-  languageOptions = [
-    {label: 'CSS', value: StyleLanguage.CSS} // we only support css for now - need to add compilers for scss and less
-    //{label: 'SCSS', value: StyleLanguage.SCSS},
-    //{label: 'Less', value: StyleLanguage.LESS}
-  ];
-  editorOptions = {
-    theme: 'vs',
-    language: 'css'
-  };
 
   headerData = {
     style: '',
@@ -84,7 +75,6 @@ export class StyleNewComponent extends CrudSaveComponent implements OnInit {
       footer_enhanced_content: [''],
       header_style: [''],
       footer_style: [''],
-      content: [null],
       variables: this.formBuilder.array([])
     });
 
