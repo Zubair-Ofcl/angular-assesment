@@ -2,6 +2,11 @@
 
 This is the front-end angular assessment
 
+[Installation](#installation)  
+[Usage](#usage)  
+[Assignment](#assignment)  
+
+
 ## Installation
 
 Run NPM install (use node v14)
@@ -52,7 +57,7 @@ Implement the autoresponder app, which should contain components to allow the us
     2. there should be a link to add a new autoresponder
        - clicking the link should navigate to page to add a new autoresponder
     3. Page should look and work the same as it does in this example:
-       https://assessment.staging.solvpath.com/autoresponders
+       https://assessment.staging.solvpath.com/autoresponders  
        you can login using the above [credentials](#credentials)
 
 
@@ -97,8 +102,8 @@ Implement the autoresponder app, which should contain components to allow the us
               - if "Use different response for after hours?" checkbox is unchecked, message_after_hours should be null
            2. call the approriate api to either create (if new) or update (if existing)
            3. refresh the data on screen
-    4. Page should look and work the same as it does in this example:
-       https://assessment.staging.solvpath.com/autoresponders/new
+    4. Page should look and work the same as it does in this example:  
+       https://assessment.staging.solvpath.com/autoresponders/new  
        you can login using the above [credentials](#credentials)
 
 3. Add an AutoResponders link to autoresponders component in the sidebar
@@ -110,11 +115,14 @@ Implement the autoresponder app, which should contain components to allow the us
     ```
 5. The [models](#models) are shown below for your reference, but they are already defined for you in _models/autoresponder.ts and _models/pager.ts
 6. The [api](#api) definition is shown below for your reference, however its recommended to use the helper classes:
-   1. add an autoresponder service in _services derived from PaginationService.  It should just call the base constructor with "autoresponders".  See AddressService as an example.
-   2. The autoresponder list component can derive from CrudPagedListComponent which will handle the api request and return an observable of your paginated results in this.data$.
+   1. add an autoresponder service in _services derived from PaginationService.  It should just call the base constructor with "autoresponders".  
+   See AddressService as an example.
+   
+   2. The autoresponder list component can derive from CrudPagedListComponent which will handle the api request and return an observable of your paginated results in this.data$.  
    See AddressComponent as an example.
-   3. The autoresponder form component can derive from CrudSaveComponent which for existing objects (where id is set) will handle the api request and return an observable of the object in this.data$.
-   It will also handle calling the api for create or update upon form submit.
+   
+   3. The autoresponder form component can derive from CrudSaveComponent which for existing objects (where id is set) will handle the api request and return an observable of the object in this.data$.  
+   It will also handle calling the api for create or update upon form submit.  
    See AddressNewComponent and AddressEditComponent as an example.
 
 ### Models
