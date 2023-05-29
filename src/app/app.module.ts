@@ -68,6 +68,7 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { NgxSmartModalModule } from "ngx-smart-modal";
 import { BreadcrumbModule } from "angular-crumbs";
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { CRMCampaignFormComponent } from './crm-campaign';
 import { SalesPhraseComponent, SalesPhraseFormComponent } from './sales-phrase';
 import { CanDeactivateGuard } from "./_guards/can-deactivate.guard";
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -152,6 +153,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SessionResultsComponent,
     TermsAndConditionsComponent,
     PersonalInfoComponent,
+    CRMCampaignFormComponent,
     SalesPhraseComponent,
     SalesPhraseFormComponent,
     DualListSortableComponent,

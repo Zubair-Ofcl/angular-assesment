@@ -190,3 +190,21 @@
     ></campaign-product-form>
   </div>
 </ngx-smart-modal>
+
+<ngx-smart-modal
+  #editCRMCampaignDialog
+  identifier="editCRMCampaignDialog"
+  customClass="nsm-dialog-md nsm-centered"
+  (onAnyCloseEventFinished)="onCloseCRMCampaignDialog()"
+>
+  <div class="modal-header">
+    <h4 class="modal-title">Edit CRM Campaign</h4>
+  </div>
+  <div class="modal-body">
+    <crm-campaign-form
+      [data]="selectedCRMCampaign"
+      (save)="onSaveCRMCampaign($event)"
+      (cancel)="editCRMCampaignDialog.close()"
+    ></crm-campaign-form>
+  </div>
+</ngx-smart-modal>
