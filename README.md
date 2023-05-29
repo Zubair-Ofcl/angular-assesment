@@ -103,7 +103,7 @@ Implement the autoresponder app, which should contain components to allow the us
            2. call the approriate api to either create (if new) or update (if existing)
            3. refresh the data on screen
     4. Page should look and work the same as it does in this example:  
-       https://assessment.staging.solvpath.com/autoresponders/new  
+       https://assessment.staging.solvpath.com/autoresponder/new  
        you can login using the above [credentials](#credentials)
 
 3. Add an AutoResponders link to autoresponders component in the sidebar
