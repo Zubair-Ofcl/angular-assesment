@@ -43,7 +43,7 @@ login using the following credentials
 <a name="credentials"></a>
 ```
 username: test@solvpath.com
-password: password123
+password: ivrpath123
 ```
 
 ## Assignment
@@ -111,7 +111,7 @@ Implement the autoresponder app, which should contain components to allow the us
    https://assessment.staging.solvpath.com/
     ```
     username: test@solvpath.com
-    password: password123
+    password: ivrpath123
     ```
 5. The [models](#models) are shown below for your reference, but they are already defined for you in _models/autoresponder.ts and _models/pager.ts
 6. The [api](#api) definition is shown below for your reference, however its recommended to use the helper classes:
