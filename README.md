@@ -26,7 +26,7 @@ Or put it in a .env file and source it
 
 ```
 cp .env.example .env
-. .env
+. ./.env
 ```
 
 Build and run the angular project
