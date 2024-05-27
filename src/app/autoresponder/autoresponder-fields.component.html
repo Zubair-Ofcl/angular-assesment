@@ -9,7 +9,7 @@
       <div class="card response-card">
         <div class="d-flex justify-content-between align-items-center">
           <h4>Response {{i+1}}</h4>
-          <a class="response-delete-icon" href="javascript:void(0);"><i class="fa fa-times-circle"></i></a>
+          <a class="response-delete-icon" href="javascript:void(0);" (click)="deleteResponse(i)"><i class="fa fa-times-circle"></i></a>
         </div>
 
         <div class="">
@@ -54,7 +54,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="message-0">SMS Message</label>
+            <label for="'message'-+index">SMS Message</label>
             <projectable-editor [id]="'message-' + index" formControlName="message" plugins="path-variables"
               toolbar="path-variables" [init]="{
               path_variables: smsPathVariables,
@@ -71,7 +71,7 @@
             <app-field-errors [errors]="fieldErrors('showAfterHourControls')"></app-field-errors>
           </div>
           <div class="form-group" *ngIf="useDifferentResponse">
-            <label for="afterHoursMessage-0">Use different response
+            <label for="'afterHoursMessage-' + index">Use different response
               for after hours?</label>
               <projectable-editor [id]="'afterHoursMessage-' + index" formControlName="afterHoursMessage" plugins="path-variables"
                 toolbar="path-variables" [init]="{
