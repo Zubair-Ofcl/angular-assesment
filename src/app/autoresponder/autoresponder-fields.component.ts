@@ -14,7 +14,6 @@ import { Form } from "../_forms";
 })
 export class AutoResponderFieldsComponent extends Form implements OnInit {
   @Input("autoresponder") autoresponder: AutoResponder;
-  autoResponderForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,7 +25,7 @@ export class AutoResponderFieldsComponent extends Form implements OnInit {
   }
 
   ngOnInit() {
-    this.autoResponderForm = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       name: ["", Validators.required],
       type: [1],
       responses: this.formBuilder.array([]),
@@ -34,7 +33,7 @@ export class AutoResponderFieldsComponent extends Form implements OnInit {
   }
 
   get responses() {
-    return this.autoResponderForm.get("responses") as FormArray;
+    return this.form.get("responses") as FormArray;
   }
 
   createResponse(): FormGroup {

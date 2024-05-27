@@ -1,235 +1,93 @@
-<form [formGroup]="autoresponderForm">
+<fieldset [formGroup]="form" class="mb-0">
   <div class="form-group">
     <label for="name">Name</label>
     <input id="name" type="text" class="form-control" formControlName="name" />
     <app-field-errors [errors]="fieldErrors('name')"></app-field-errors>
   </div>
+  <div class="row" formarrayname="responses">
+    <div class="col-md-6" *ngFor="let response of responses.controls; index as i">
+      <div class="card response-card">
+        <div class="d-flex justify-content-between align-items-center">
+          <h4>Response {{i+1}}</h4>
+          <a class="response-delete-icon" href="javascript:void(0);"><i class="fa fa-times-circle"></i></a>
+        </div>
 
-  <input type="hidden" formControlName="type" value="1" />
-  <div class="row">
-    <div
-      formArrayName="responses"
-      *ngFor="let response of responses.controls; index as i"
-      class="col-12 col-md-6 my-3"
-    >
-      <div [formGroupName]="i" class="bg-white-rounded response-card">
-        <input type="hidden" formControlName="id" />
-        <div class="d-flex justify-content-between">
-          <h4>Response {{ i + 1 }}</h4>
-          <a
-            class="response-delete-icon"
-            *ngIf="responses.controls.length > 1"
-            (click)="deleteResponse(i)"
-            href="javascript:void(0);"
-          >
-            <i class="fa fa-times-circle"></i>
-          </a>
-        </div>
-        <div class="row">
-          <div class="col-md-4 form-group">
-            <label for="days">Days</label>
-            <input
-              class="form-control"
-              formControlName="days"
-              id="days"
-              min="0"
-              type="number"
-            />
-            <app-field-errors></app-field-errors>
-          </div>
-          <div class="col-md-4 form-group">
-            <label for="hours">Hours</label>
-            <input
-              class="form-control"
-              formControlName="hours"
-              id="hours"
-              min="0"
-              type="number"
-            />
-            <app-field-errors></app-field-errors>
-          </div>
-          <div class="col-md-4 form-group">
-            <label for="minutes">Minutes</label>
-            <div class="select-wrapper">
-              <select
-                class="form-control"
-                formControlName="minutes"
-                id="minutes"
-              >
-                <option value="0">0</option>
-                <option value="15">15</option>
-                <option value="30">30</option>
-                <option value="45">45</option>
-              </select>
+        <div class="">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="days">Days <app-help><span class="help" href="javascript:void(0);"><a
+                        href="javascript:void(0);"><i class="fa fa-question-circle"></i></a>
+                      <div> Enter the amount of days to wait before sending this message. <a class="help-close-button"
+                          href="javascript:void(0);"><i class="fa fa-times-circle"></i></a></div>
+                    </span></app-help></label>
+                <input class="form-control" formcontrolname="days" id="days" min="0" type="number">
+
+                <app-field-errors [errors]="fieldErrors('days')"></app-field-errors>
+              </div>
             </div>
-            <app-field-errors></app-field-errors>
+            <div class="col-md-4">
+              <div class="form-group"><label for="hours">Hours <app-help><span class="help"
+                      href="javascript:void(0);"><a href="javascript:void(0);"><i class="fa fa-question-circle"></i></a>
+                      <div> Enter the amount of hours to wait before sending this message. <a class="help-close-button"
+                          href="javascript:void(0);"><i class="fa fa-times-circle"></i></a></div>
+                    </span></app-help></label>
+                <input class="form-control" formcontrolname="hours" id="hours" min="0" type="number">
+
+                <app-field-errors [errors]="fieldErrors('hours')"></app-field-errors>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group"><label for="minutes">Minutes <app-help><span class="help"
+                      href="javascript:void(0);"><a href="javascript:void(0);"><i class="fa fa-question-circle"></i></a>
+                      <div> Enter the amount of minutes to wait before sending this message. <a
+                          class="help-close-button" href="javascript:void(0);"><i class="fa fa-times-circle"></i></a>
+                      </div>
+                    </span></app-help></label>
+                <div class="select-wrapper"><select class="form-control" formcontrolname="minutes" id="minutes"><!---->
+                    <option value="0">0</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                  </select></div><app-field-errors><!----></app-field-errors>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="message-0">SMS Message</label>
-          <projectable-editor
-            [id]="'message-' + i"
-            formControlName="message"
-            plugins="path-variables"
-            toolbar="path-variables"
-            [init]="{
+          <div class="form-group">
+            <label for="message-0">SMS Message</label>
+            <projectable-editor [id]="'message-' + index" formControlName="message" plugins="path-variables"
+              toolbar="path-variables" [init]="{
               path_variables: smsPathVariables,
               forced_root_block: '',
               valid_elements: '',
-              init_instance_callback: smsEditorInitCallback
-            }"
-          ></projectable-editor>
-          <app-field-errors></app-field-errors>
+              init_instance_callback: smsEditorInitCallback}">
+            </projectable-editor>
+            <app-field-errors [errors]="fieldErrors('message')"></app-field-errors>
+          </div>
+          <div class="form-group">
+            <input id="showAfterHourControls" formControlName="useDifferentResponse" type="checkbox">
+            <label for="showAfterHourControls">Use different response
+              for after hours?</label>
+            <app-field-errors [errors]="fieldErrors('showAfterHourControls')"></app-field-errors>
+          </div>
+          <div class="form-group" *ngIf="useDifferentResponse">
+            <label for="afterHoursMessage-0">Use different response
+              for after hours?</label>
+              <projectable-editor [id]="'afterHoursMessage-' + index" formControlName="afterHoursMessage" plugins="path-variables"
+                toolbar="path-variables" [init]="{
+                path_variables: smsPathVariables,
+                forced_root_block: '',
+                valid_elements: '',
+                init_instance_callback: smsEditorInitCallback}">
+              </projectable-editor>
+            <app-field-errors [errors]="fieldErrors('afterHoursMessage')"></app-field-errors>
+          </div>
         </div>
-        <div class="form-group">
-          <input
-            id="showAfterHourControls"
-            type="checkbox"
-            formControlName="useDifferentResponse"
-          />
-          <label for="showAfterHourControls"
-            >Use different response for after hours?</label
-          >
-        </div>
-        <projectable-editor
-          *ngIf="response.get('useDifferentResponse').value"
-          formControlName="afterHoursMessage"
-          plugins="path-variables"
-          toolbar="path-variables"
-          [init]="{
-            path_variables: smsPathVariables,
-            forced_root_block: '',
-            valid_elements: '',
-            init_instance_callback: smsEditorInitCallback
-          }"
-        ></projectable-editor>
-        <button *ngIf="i !== 0" (click)="deleteResponse(i)">Delete</button>
       </div>
     </div>
-
-    <a
-      href="javascript:void(0);"
-      (click)="addResponse()"
-      class="blue-link col-12 col-md-6 my-3"
-      >+ Add Another Response</a
-    >
-  </div>
-</form>
-
-<!-- <div [formGroup]="autoResponderForm">
-  <div class="row">
-    <div class="col-12 form-group">
-      <label for="name">Name</label>
-      <input
-        id="name"
-        type="text"
-        class="form-control"
-        formControlName="name"
-      />
-      <app-field-errors [errors]="fieldErrors('name')"></app-field-errors>
+    <div class="col-md-3 new-response-link">
+      <a class="blue-link add-another-response" href="javascript:void(0);" (click)="addResponse()">
+        + Add Another Response</a>
     </div>
   </div>
-
-  <form [formGroup]="autoResponderForm" (ngSubmit)="onSubmit()" class="row">
-    <div
-      formArrayName="responses"
-      *ngFor="
-        let response of autoResponderForm.get('responses').controls;
-        let i = index
-      "
-      [formGroupName]="i"
-      class="col-md-6 bg-white-rounded mt-4 response-card"
-    >
-      <h3>Response {{ i + 1 }}</h3>
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="days">Days</label>
-          <input
-            type="number"
-            id="days"
-            formControlName="days"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group col-md-4">
-          <label for="hours">Hours</label>
-          <input
-            type="number"
-            id="hours"
-            formControlName="hours"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group col-md-4">
-          <label for="minutes">Minutes</label>
-          <select formControlName="minutes" class="form-control">
-            <option value="0">0</option>
-            <option value="15">15</option>
-            <option value="30">30</option>
-            <option value="45">45</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="smsMessage">SMS Message</label>
-        <projectable-editor
-          [id]="'message' + i"
-          formControlName="message"
-          plugins="path-variables"
-          toolbar="path-variables"
-          [init]="{
-            path_variables: smsPathVariables,
-            forced_root_block: '',
-            valid_elements: '',
-            init_instance_callback: smsEditorInitCallback
-          }"
-        >
-        </projectable-editor>
-      </div>
-
-      <div class="form-group">
-        <input
-          type="checkbox"
-          id="message_after_hours"
-          formControlName="message_after_hours"
-        />
-        <label for="message_after_hours"
-          >Use different response for after hours?</label
-        >
-      </div>
-      <div
-        class="form-group"
-        *ngIf="
-          autoResponderForm.get('responses').get(i).get('message_after_hours')
-            .value
-        "
-      >
-        <label for="message_after_hours">After Hours Message</label>
-        <projectable-editor
-          [id]="'message_after_hours-' + i"
-          formControlName="message_after_hours"
-          plugins="path-variables"
-          toolbar="path-variables"
-          [init]="{
-            path_variables: smsPathVariables,
-            forced_root_block: '',
-            valid_elements: '',
-            init_instance_callback: smsEditorInitCallback
-          }"
-        ></projectable-editor>
-      </div>
-      <button
-        *ngIf="i > 0"
-        type="button"
-        class="btn btn-danger"
-        (click)="removeResponse(i)"
-      >
-        Delete Response
-      </button>
-    </div>
-    <a href="javascript:void(0);" (click)="addResponse()" class="blue-link"
-      >+ Add Another Response</a
-    >
-  </form>
-</div> -->
+</fieldset>
