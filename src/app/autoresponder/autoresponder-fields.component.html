@@ -9,7 +9,7 @@
       <div class="card response-card">
         <div class="d-flex justify-content-between align-items-center">
           <h4>Response {{i+1}}</h4>
-          <a class="response-delete-icon" href="javascript:void(0);" (click)="deleteResponse(i)"><i class="fa fa-times-circle"></i></a>
+          <a *ngIf="responses.length >1" class="response-delete-icon" href="javascript:void(0);" (click)="deleteResponse(i)"><i class="fa fa-times-circle"></i></a>
         </div>
 
         <div class="">
@@ -44,18 +44,21 @@
                           class="help-close-button" href="javascript:void(0);"><i class="fa fa-times-circle"></i></a>
                       </div>
                     </span></app-help></label>
-                <div class="select-wrapper"><select class="form-control" formcontrolname="minutes" id="minutes"><!---->
+                <div class="select-wrapper">
+                  <select class="form-control" formcontrolname="minutes" id="minutes">
                     <option value="0">0</option>
                     <option value="15">15</option>
                     <option value="30">30</option>
                     <option value="45">45</option>
-                  </select></div><app-field-errors><!----></app-field-errors>
+                  </select>
+                </div>
+                <app-field-errors [errors]="fieldErrors('minutes')"></app-field-errors>
               </div>
             </div>
           </div>
           <div class="form-group">
-            <label for="'message'-+index">SMS Message</label>
-            <projectable-editor [id]="'message-' + index" formControlName="message" plugins="path-variables"
+            <label for="'message_'+i">SMS Message</label>
+            <projectable-editor [id]="'message_'+i" formControlName="message" plugins="path-variables"
               toolbar="path-variables" [init]="{
               path_variables: smsPathVariables,
               forced_root_block: '',
@@ -65,15 +68,15 @@
             <app-field-errors [errors]="fieldErrors('message')"></app-field-errors>
           </div>
           <div class="form-group">
-            <input id="showAfterHourControls" formControlName="useDifferentResponse" type="checkbox">
+            <input id="showAfterHourControls" formControlName="showAfterHourControls" type="checkbox">
             <label for="showAfterHourControls">Use different response
               for after hours?</label>
             <app-field-errors [errors]="fieldErrors('showAfterHourControls')"></app-field-errors>
           </div>
-          <div class="form-group" *ngIf="useDifferentResponse">
+          <div class="form-group" *ngIf="showAfterHourControls">
             <label for="'afterHoursMessage-' + index">Use different response
               for after hours?</label>
-              <projectable-editor [id]="'afterHoursMessage-' + index" formControlName="afterHoursMessage" plugins="path-variables"
+              <projectable-editor [id]="'afterHoursMessage-' + index" formControlName="message_after_hours" plugins="path-variables"
                 toolbar="path-variables" [init]="{
                 path_variables: smsPathVariables,
                 forced_root_block: '',

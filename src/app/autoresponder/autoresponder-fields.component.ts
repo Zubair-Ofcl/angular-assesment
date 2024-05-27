@@ -43,8 +43,8 @@ export class AutoResponderFieldsComponent extends Form implements OnInit {
       hours: [0],
       minutes: [0],
       message: ["", Validators.required],
-      useDifferentResponse: [false],
-      afterHoursMessage: [""],
+      showAfterHourControls: [false],
+      message_after_hours: [""],
     });
   }
 
