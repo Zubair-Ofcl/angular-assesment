@@ -2,5 +2,6 @@
     "image": "mcr.microsoft.com/devcontainers/universal:2",
     "features": {},
     "name": "TypeScript Node.js",
-    "image": "mcr.microsoft.com/devcontainers/typescript-node:1-14"
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:1-14",
+    "postCreateCommand": "nvm install 14 && nvm use 14"
 }
